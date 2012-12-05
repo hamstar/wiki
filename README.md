@@ -1,4 +1,4 @@
 wiki
 ====
 
-Just a wiki for my own stuff.
+Everything is going on in the [wiki](/hamstar/wiki/wiki).
