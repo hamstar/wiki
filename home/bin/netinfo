@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This script gets all the info it can about the networks
+# and dumps it to STDOUT... this can then be redirected to a
+# file such as /var/local/networks or something
+
 IFCONFIG="/sbin/ifconfig";
 ROUTE="/sbin/route";
 

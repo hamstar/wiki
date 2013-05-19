@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+# This script reads network info from a netinfo file
+# and outputs green IPs or red Offlines
+
 require 'rubygems'
 require 'colored'
 

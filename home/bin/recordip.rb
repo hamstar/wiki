@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+# This script logs every internet facing IP address you connect with
+
 require 'open-uri'
 
 url='http://duckduckgo.com/?q=what+is+my+ip'
