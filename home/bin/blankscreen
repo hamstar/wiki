@@ -2,5 +2,6 @@
 
 # This will turn your screens off (instantly)
 # Update the sleep param if screens turn back on (it's still detecting your keyboard presses)
+# Bind it to something like CTRL+ALT+Q in your window manager
 
 sleep 1; xset dpms force off
