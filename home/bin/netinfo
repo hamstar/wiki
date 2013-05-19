@@ -1,0 +1,26 @@
+#!/bin/bash
+
+IFCONFIG="/sbin/ifconfig";
+ROUTE="/sbin/route";
+
+if [ "$(ping 8.8.8.8 -c 2 2>/dev/null |grep '100% packet loss'|wc -l)" = "1" ]; then
+  INTERNET="";
+else
+#  INTERNET=`wget http://jsonip.com -q -O - | cut -d'"' -f4`;
+  INTERNET=`tail -1 /var/log/ips`;
+fi;
+
+LAN=`$IFCONFIG em1 2> /dev/null|grep "inet addr"|cut -d':' -f2|cut -d' ' -f1`;
+WLAN=`$IFCONFIG wlan1 2> /dev/null|grep "inet addr"|cut -d':' -f2|cut -d' ' -f1`;
+GATEWAY=`$ROUTE -n|grep 'UG'| grep -P '0\.0\.0\.0.*0\.0\.0\.0'|tail -n 1|tr -s ' ' ' ' |cut -d' ' -f2`;
+TUN0=`$IFCONFIG tun0 2> /dev/null|grep "inet addr"|cut -d':' -f2|cut -d' ' -f1`;
+TUN1=`$IFCONFIG tun1 2> /dev/null|grep "inet addr"|cut -d':' -f2|cut -d' ' -f1`;
+TUN2=`$IFCONFIG tun2 2> /dev/null|grep "inet addr"|cut -d':' -f2|cut -d' ' -f1`;
+
+echo "LAN=\"$LAN\"";
+echo "WLAN=\"$WLAN\"";
+echo "INTERNET=\"$INTERNET\"";
+echo "GATEWAY=\"$GATEWAY\"";
+echo "TUN0=\"$TUN0\"";
+echo "TUN1=\"$TUN1\"";
+echo "TUN2=\"$TUN2\"";

@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'colored'
+
+system "netinfo > /var/local/networks"
+
+ips = Hash.new
+File.read("/var/local/networks").each_line do |l|
+  f, v = *l.split("=").map {|s| s.chomp.gsub("\"",'') }
+  v = "Offline".red if v.empty?
+  v = "#{v}".green if !v.nil?
+  ips[f.downcase.to_sym] = v
+end
+
+puts <<EOM
+
+   Internet: #{ips[:internet]}     Gateway: #{ips[:gateway]}     LAN: #{ips[:lan]}     TUN0: #{ips[:tun0]}
+EOM
