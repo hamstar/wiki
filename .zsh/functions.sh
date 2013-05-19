@@ -1,4 +1,3 @@
-
 # Gives some chopped down CPU info
 function cpuinfo {
   cat /proc/cpuinfo|grep -P 'processor|MHz|model name|cache size'|sed 's/processor/\nprocessor/'
